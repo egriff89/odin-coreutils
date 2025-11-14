@@ -11,7 +11,7 @@ main :: proc() {
     }
 
     opt: Options
-    style: flags.Parsing_Style = .Odin
+    style: flags.Parsing_Style = .Unix
     flags.parse_or_exit(&opt, os.args, style)
 
     str: string
