@@ -10,7 +10,7 @@ Attempting to rewrite the GNU coreutils in Odin as a way of learning the languag
 - [ ] [cp](https://en.wikipedia.org/wiki/Cp_(Unix))
 - [ ] [dd](https://en.wikipedia.org/wiki/Dd_(Unix))
 - [ ] [df](https://en.wikipedia.org/wiki/Df_(Unix))
-- [ ] [dir](https://en.wikipedia.org/wiki/Ls)
+- [ ] [dir](https://en.wikipedia.org/wiki/Dir_(command))
 - [ ] [dircolors](https://man7.org/linux/man-pages/man1/dircolors.1.html)
 - [ ] [install](https://en.wikipedia.org/wiki/Install_(Unix))
 - [ ] [ln](https://en.wikipedia.org/wiki/Ln_(Unix))
@@ -65,13 +65,13 @@ Attempting to rewrite the GNU coreutils in Odin as a way of learning the languag
 - [ ] [wc](https://en.wikipedia.org/wiki/Wc_(Unix))
 
 ### Shell utilities
-- [ ] [arch](https://en.wikipedia.org/wiki/Uname)
+- [ ] [arch](https://en.wikipedia.org/wiki/Uname) - Same as `uname -m`
 - [ ] [basename](https://en.wikipedia.org/wiki/Basename)
 - [ ] [chroot](https://en.wikipedia.org/wiki/Chroot)
 - [ ] [date](https://en.wikipedia.org/wiki/Unix_time#Command_line)
 - [ ] [dirname](https://en.wikipedia.org/wiki/Dirname)
 - [ ] [du](https://en.wikipedia.org/wiki/Du_(Unix))
-- [ ] [echo](https://en.wikipedia.org/wiki/Echo_(command))
+- [x] [echo](https://en.wikipedia.org/wiki/Echo_(command))
 - [ ] [env](https://en.wikipedia.org/wiki/Env)
 - [ ] [expr](https://en.wikipedia.org/wiki/Expr)
 - [ ] [factor](https://en.wikipedia.org/wiki/Factor_(Unix))
@@ -101,7 +101,7 @@ Attempting to rewrite the GNU coreutils in Odin as a way of learning the languag
 - [ ] [timeout](https://man7.org/linux/man-pages/man1/timeout.1.html)
 - [ ] [true](https://en.wikipedia.org/wiki/True_(Unix))
 - [ ] [tty](https://man7.org/linux/man-pages/man1/tty.1.html)
-- [ ] [uname](https://en.wikipedia.org/wiki/Uname)
+- [ ] [uname](https://man7.org/linux/man-pages/man1/uname.1.html)
 - [ ] [unlink](https://en.wikipedia.org/wiki/Unlink_(Unix))
 - [ ] [uptime](https://en.wikipedia.org/wiki/Uptime#coreutils)
 - [ ] [users](https://en.wikipedia.org/wiki/Users_(Unix))
