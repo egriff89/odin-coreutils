@@ -1,10 +1,10 @@
 package echo
 
-import "../utils"
 import "core:flags"
 import "core:fmt"
 import "core:os"
 import "core:strings"
+import "utils"
 
 main :: proc() {
 	Options :: struct {
