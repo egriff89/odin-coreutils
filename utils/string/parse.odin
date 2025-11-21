@@ -2,7 +2,6 @@ package utils
 
 import "core:os"
 
-
 // Interprets C-style escapes in a string and writes to a writer
 write_escaped_string :: proc(writer: ^os.Handle, s: string) -> os.Errno {
 	i := 0
@@ -109,4 +108,3 @@ hex_value :: proc(c: byte) -> u8 {
 	if c >= 'a' && c <= 'f' {return c - 'a' + 10}
 	return c - 'A' + 10
 }
-
