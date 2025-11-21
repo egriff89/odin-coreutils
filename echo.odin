@@ -1,4 +1,4 @@
-package echo
+package coreutils
 
 import "core:flags"
 import "core:fmt"

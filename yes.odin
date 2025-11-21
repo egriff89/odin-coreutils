@@ -1,4 +1,4 @@
-package yes
+package coreutils
 
 import "core:flags"
 import "core:fmt"
