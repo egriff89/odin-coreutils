@@ -4,7 +4,7 @@ import "core:flags"
 import "core:fmt"
 import "core:os"
 import "core:strings"
-import "utils"
+import st "utils/string"
 
 main :: proc() {
 	Options :: struct {
@@ -27,9 +27,8 @@ main :: proc() {
 		fmt.print(str)
 	} else if opt.interp {
 		opt.nointerp = false
-		utils.write_escaped_string(&os.stdout, str)
+		st.write_escaped_string(&os.stdout, str)
 	} else {
 		fmt.println(str)
 	}
 }
-
