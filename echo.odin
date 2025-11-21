@@ -22,13 +22,20 @@ main :: proc() {
 
 	str := strings.join(opt.overflow[:], " ")
 
+	// -n passed, do not parse newlines
 	if opt.no_newline {
-		opt.nointerp = false
-		fmt.print(str)
+		if opt.interp {
+			// -e also passed, parse all escapes (including newlines)
+			st.write_escaped_string(&os.stdout, str)
+		} else {
+			// Only remove newlines
+			fmt.print(strings.replace(str, "\n", "", -1))
+		}
 	} else if opt.interp {
-		opt.nointerp = false
 		st.write_escaped_string(&os.stdout, str)
+		fmt.print("\n")
 	} else {
+		// No flags passed, same as -E
 		fmt.println(str)
 	}
 }
