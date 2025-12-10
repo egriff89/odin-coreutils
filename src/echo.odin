@@ -4,7 +4,7 @@ import "core:flags"
 import "core:fmt"
 import "core:os"
 import "core:strings"
-import st "utils/string"
+import st "../utils/string"
 
 main :: proc() {
 	Options :: struct {
