@@ -1,10 +1,12 @@
 package coreutils
 
 import "core:fmt"
-import "core:os"
+import "core:sys/posix"
 
 main :: proc() {
-	fmt.println(os.get_env("USER"))
+    uid := posix.getuid()
+    user := posix.getpwuid(uid)
+    if user != nil {
+        fmt.println(user.pw_name)
+    }
 }
-
-
