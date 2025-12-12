@@ -86,7 +86,7 @@ Attempting to rewrite the GNU coreutils in Odin as a way of learning the languag
 - [ ] [nproc](https://man7.org/linux/man-pages/man1/nproc.1.html)
 - [ ] [pathchk](https://man7.org/linux/man-pages/man1/pathchk.1.html)
 - [ ] [pinky](https://man7.org/linux/man-pages/man1/pinky.1.html)
-- [ ] [printenv](https://en.wikipedia.org/wiki/Printenv)
+- [x] [printenv](https://man7.org/linux/man-pages/man1/printenv.1.html)
 - [ ] [printf](https://en.wikipedia.org/wiki/Printf_(Unix))
 - [ ] [pwd](https://en.wikipedia.org/wiki/Pwd)
 - [ ] [readlink](https://en.wikipedia.org/wiki/Readlink_(Unix))
