@@ -4,5 +4,7 @@ build-all:
     find .. -name '*.odin' -not -path '../utils/*' -exec odin build {} -file \;
 
 build file:
-    @echo 'Building src/{{file}}.odin'
     odin build ../src/{{file}}.odin -file
+
+run file:
+    odin run ../src/{{file}}.odin -file
