@@ -39,7 +39,7 @@ main :: proc() {
             uname.machine,
             get_os())
     } else if opt.kernel || opt.kernel_long {
-        fmt.printfln("%s", ODIN_OS_STRING)
+        fmt.println(ODIN_OS_STRING)
     } else if opt.nodename || opt.nodename_long {
         fmt.printfln("%s", uname.nodename)
     } else if opt.release || opt.release_long {
