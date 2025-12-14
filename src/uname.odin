@@ -32,14 +32,14 @@ main :: proc() {
 
     if opt.all || opt.all_long {
         fmt.printfln("%s %s %s %s %s %s",
-            ODIN_OS_STRING,
+            ODIN_OS,
             uname.nodename,
             uname.release,
             uname.version,
             uname.machine,
             get_os())
     } else if opt.kernel || opt.kernel_long {
-        fmt.println(ODIN_OS_STRING)
+        fmt.printfln("%s", ODIN_OS)
     } else if opt.nodename || opt.nodename_long {
         fmt.printfln("%s", uname.nodename)
     } else if opt.release || opt.release_long {
@@ -49,10 +49,10 @@ main :: proc() {
     } else if opt.machine || opt.machine_long {
         fmt.printfln("%s", uname.machine)
     } else if opt.os || opt.os_long {
-        fmt.println("%s", get_os())
+        fmt.println(get_os())
     } else {
         // Default behavior: print the kernel name
-        fmt.println(ODIN_OS_STRING)
+        fmt.printfln("%s", ODIN_OS)
     }
 
     os.exit(0)
