@@ -101,7 +101,7 @@ Attempting to rewrite the GNU coreutils in Odin as a way of learning the languag
 - [ ] [timeout](https://man7.org/linux/man-pages/man1/timeout.1.html)
 - [x] [true](https://man7.org/linux/man-pages/man1/true.1.html)
 - [ ] [tty](https://man7.org/linux/man-pages/man1/tty.1.html)
-- [ ] [uname](https://man7.org/linux/man-pages/man1/uname.1.html)
+- [x] [uname](https://man7.org/linux/man-pages/man1/uname.1.html)
 - [ ] [unlink](https://man7.org/linux/man-pages/man1/unlink.1.html)
 - [ ] [uptime](https://man7.org/linux/man-pages/man1/uptime.1.html)
 - [ ] [users](https://man7.org/linux/man-pages/man1/users.1.html)
