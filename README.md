@@ -65,7 +65,7 @@ Attempting to rewrite the GNU coreutils in Odin as a way of learning the languag
 - [ ] [wc](https://man7.org/linux/man-pages/man1/wc.1.html)
 
 ### Shell utilities
-- [ ] [arch](https://man7.org/linux/man-pages/man1/arch.1.html) - Same as `uname -m`
+- [x] [arch](https://man7.org/linux/man-pages/man1/arch.1.html) - Same as `uname -m`
 - [ ] [basename](https://man7.org/linux/man-pages/man1/basename.1.html)
 - [ ] [chroot](https://man7.org/linux/man-pages/man1/chroot.1.html)
 - [ ] [date](https://man7.org/linux/man-pages/man1/date.1.html)
