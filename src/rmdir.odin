@@ -9,7 +9,7 @@ main :: proc() {
     Options :: struct {
         overflow: [dynamic]string `usage:"files or directories to remove"`,
         verbose: bool `args:"name=v" usage:"explain what is being done`,
-        verbose_long: bool `args:"name=v" usage:"explain what is being done`
+        verbose_long: bool `args:"name=verbose" usage:"explain what is being done`
     }
 
     opts: Options
