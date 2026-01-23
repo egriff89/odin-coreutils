@@ -22,7 +22,7 @@ Attempting to rewrite the GNU coreutils in Odin as a way of learning the languag
 - [ ] [mv](https://man7.org/linux/man-pages/man1/mv.1.html)
 - [ ] [realpath](https://man7.org/linux/man-pages/man1/realpath.1.html)
 - [x] [rm](https://man7.org/linux/man-pages/man1/rm.1.html)
-- [ ] [rmdir](https://man7.org/linux/man-pages/man1/rmdir.1.html)
+- [x] [rmdir](https://man7.org/linux/man-pages/man1/rmdir.1.html)
 - [ ] [shred](https://man7.org/linux/man-pages/man1/shred.1.html)
 - [ ] [sync](https://man7.org/linux/man-pages/man1/sync.1.html)
 - [ ] [touch](https://man7.org/linux/man-pages/man1/touch.1.html)
