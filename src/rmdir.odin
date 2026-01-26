@@ -19,13 +19,13 @@ main :: proc() {
 
     if len(files) > 0 {
         for file in files {
-            if os.remove_directory(file) != nil {
+            if os.remove_directory(file) == nil {
+                if opts.verbose || opts.verbose_long {
+                    fmt.printfln("rmdir: removing directory, '%s'", file)
+                }
+            } else {
                 fmt.printfln("rmdir: failed to remove '%s': Directory not empty", file)
                 return
-            }
-
-            if opts.verbose || opts.verbose_long {
-                fmt.printfln("rmdir: removing directory, '%s'", file)
             }
         }
     }

@@ -31,7 +31,7 @@ main :: proc() {
         } else {
             for file in files {
                 if opts.verbose || opts.verbose_long {
-                    fmt.println("removed: ", file)
+                    fmt.printfln("removed: %s", file)
                 }
                 os.remove(file)
             }
@@ -42,7 +42,7 @@ main :: proc() {
 recursive_remove :: proc(path: string, verbose: bool) {
     file_info, err := os.stat(path)
     if err != nil {
-        fmt.println("rm: cannot access '", path, "': No such file or directory")
+        fmt.printfln("rm: cannot access '%s': No such file or directory", path)
         return
     }
 
@@ -50,14 +50,14 @@ recursive_remove :: proc(path: string, verbose: bool) {
         // Open directory and read its contents
         handle, open_err := os.open(path)
         if open_err != nil {
-            fmt.println("rm: cannot open '", path, "'")
+            fmt.printfln("rm: cannot open '%s'", path)
             return
         }
         defer os.close(handle)
 
         entries, read_err := os.read_dir(handle, -1)
         if read_err != nil {
-            fmt.println("rm: cannot read '", path, "'")
+            fmt.printfln("rm: cannot read '%s'", path)
             return
         }
         defer os.file_info_slice_delete(entries)
@@ -72,14 +72,14 @@ recursive_remove :: proc(path: string, verbose: bool) {
         // Delete the now-empty directory
         if os.remove_directory(path) == nil {
             if verbose {
-                fmt.println("removed directory: ", path)
+                fmt.printfln("removed directory: %s", path)
             }
         }
     } else {
         // Delete file
         if os.remove(path) == nil {
             if verbose {
-                fmt.println("removed: ", path)
+                fmt.printfln("removed: %s", path)
             }
         }
     }
