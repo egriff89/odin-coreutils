@@ -21,7 +21,7 @@ main :: proc() {
     // Print the value of an environment variable if provided
     // For example: `printenv HOME`
     if len(str) > 0 {
-        value := os.get_env(str)
+        value := os.get_env(str, context.allocator)
         if opt.null || opt.null_long {
             fmt.print(value)
             os.write_byte(os.stdout, 0)

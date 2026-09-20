@@ -26,13 +26,13 @@ main :: proc() {
 	if opt.no_newline {
 		if opt.interp {
 			// -e also passed, parse all escapes (including newlines)
-			st.write_escaped_string(&os.stdout, str)
+			st.write_escaped_string(os.stdout, str)
 		} else {
 			// Only remove newlines
 			fmt.print(strings.replace(str, "\n", "", -1))
 		}
 	} else if opt.interp {
-		st.write_escaped_string(&os.stdout, str)
+		st.write_escaped_string(os.stdout, str)
 		fmt.print("\n")
 	} else {
 		// No flags passed, same as -E

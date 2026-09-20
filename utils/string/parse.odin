@@ -4,12 +4,12 @@ package utils
 import "core:os"
 
 // Interprets C-style escapes in a string and writes to a writer
-write_escaped_string :: proc(writer: ^os.Handle, s: string) -> os.Errno {
+write_escaped_string :: proc(writer: ^os.File, s: string) -> os.Error {
 	i := 0
 	for i < len(s) {
 		if s[i] != '\\' {
 			// Write non-escaped byte
-			os.write_byte(writer^, s[i]) or_return
+			os.write_byte(writer, s[i]) or_return
 			i += 1
 			continue
 		}
@@ -24,10 +24,10 @@ write_escaped_string :: proc(writer: ^os.Handle, s: string) -> os.Errno {
 	return nil
 }
 
-handle_escapes :: proc(writer: ^os.Handle, s: string, start: int) -> (idx: int, err: os.Errno) {
+handle_escapes :: proc(writer: ^os.File, s: string, start: int) -> (idx: int, err: os.Error) {
 	if start >= len(s) {
 		// Trailing backslash - treat as literal
-		os.write_byte(writer^, '\\') or_return
+		os.write_byte(writer, '\\') or_return
 		return start, nil
 	}
 
@@ -44,7 +44,7 @@ handle_escapes :: proc(writer: ^os.Handle, s: string, start: int) -> (idx: int, 
 			'v'  = '\v',
 			'\\' = '\\',
 		}
-		os.write_byte(writer^, simple_escapes[rune(esc)]) or_return
+		os.write_byte(writer, simple_escapes[rune(esc)]) or_return
 		return start + 1, nil
 	case '0' ..= '7':
 		// Octal escape
@@ -58,24 +58,24 @@ handle_escapes :: proc(writer: ^os.Handle, s: string, start: int) -> (idx: int, 
 			i += 1
 		}
 
-		os.write_byte(writer^, value) or_return
+		os.write_byte(writer, value) or_return
 		return i, nil
 	case 'x':
 		// Hex escape
 		i := start + 1
 		if i >= len(s) {
 			// No digits - write literal \x
-			os.write_byte(writer^, '\\') or_return
-			os.write_byte(writer^, 'x') or_return
+			os.write_byte(writer, '\\') or_return
+			os.write_byte(writer, 'x') or_return
 			return i, nil
 		}
 
 		// Parse first hex digit
 		digit := s[i]
 		if !is_hex_digit(digit) {
-			os.write_byte(writer^, '\\') or_return
-			os.write_byte(writer^, 'x') or_return
-			os.write_byte(writer^, digit) or_return
+			os.write_byte(writer, '\\') or_return
+			os.write_byte(writer, 'x') or_return
+			os.write_byte(writer, digit) or_return
 			return i + 1, nil
 		}
 		value := hex_value(digit)
@@ -86,12 +86,12 @@ handle_escapes :: proc(writer: ^os.Handle, s: string, start: int) -> (idx: int, 
 			i += 1 // Past second digit
 		}
 
-		os.write_byte(writer^, value) or_return
+		os.write_byte(writer, value) or_return
 		return i, nil
 	case:
 		// Unknown escape - write \ + esc
-		os.write_byte(writer^, '\\') or_return
-		os.write_byte(writer^, esc) or_return
+		os.write_byte(writer, '\\') or_return
+		os.write_byte(writer, esc) or_return
 		return start + 1, nil
 	}
 }
