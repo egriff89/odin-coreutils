@@ -24,7 +24,7 @@ main :: proc() {
     }
 
     opt: Option
-    style: flags.Parsing_Style = .Unix
+    style: flags.Parsing_Style = .Odin
     flags.parse_or_exit(&opt, os.args, style)
 
     uname: posix.utsname

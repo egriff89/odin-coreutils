@@ -13,7 +13,7 @@ main :: proc() {
     }
 
     opts: Options
-    style: flags.Parsing_Style = .Unix
+    style: flags.Parsing_Style = .Odin
     flags.parse_or_exit(&opts, os.args, style)
     files := strings.split(strings.join(opts.overflow[:], " "), " ")
 

@@ -11,7 +11,7 @@ main :: proc() {
 	}
 
 	opt: Options
-	style: flags.Parsing_Style = .Unix
+	style: flags.Parsing_Style = .Odin
 	flags.parse_or_exit(&opt, os.args, style)
 
 	str: string
@@ -25,4 +25,3 @@ main :: proc() {
 		fmt.println(str)
 	}
 }
-
