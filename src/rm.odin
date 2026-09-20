@@ -1,5 +1,6 @@
 package coreutils
 
+import "base:runtime"
 import "core:strings"
 import "core:flags"
 import "core:fmt"
@@ -16,7 +17,7 @@ main :: proc() {
     }
 
     opts: Options
-    style: flags.Parsing_Style = .Unix
+    style: flags.Parsing_Style = .Odin
     flags.parse_or_exit(&opts, os.args, style)
     files := strings.split(strings.join(opts.overflow[:], " "), " ")
 
@@ -40,13 +41,14 @@ main :: proc() {
 }
 
 recursive_remove :: proc(path: string, verbose: bool) {
-    file_info, err := os.stat(path)
+	allocator := context.allocator
+    file_info, err := os.stat(path, allocator)
     if err != nil {
         fmt.printfln("rm: cannot access '%s': No such file or directory", path)
         return
     }
 
-    if file_info.is_dir {
+    if file_info.type == .Directory {
         // Open directory and read its contents
         handle, open_err := os.open(path)
         if open_err != nil {
@@ -55,12 +57,12 @@ recursive_remove :: proc(path: string, verbose: bool) {
         }
         defer os.close(handle)
 
-        entries, read_err := os.read_dir(handle, -1)
+        entries, read_err := os.read_dir(handle, -1, allocator)
         if read_err != nil {
             fmt.printfln("rm: cannot read '%s'", path)
             return
         }
-        defer os.file_info_slice_delete(entries)
+        defer os.file_info_slice_delete(entries, allocator)
 
         // Recursively delete contents
         for entry in entries {
@@ -70,7 +72,7 @@ recursive_remove :: proc(path: string, verbose: bool) {
         }
 
         // Delete the now-empty directory
-        if os.remove_directory(path) == nil {
+        if os.remove_all(path) == nil {
             if verbose {
                 fmt.printfln("removed directory: %s", path)
             }
