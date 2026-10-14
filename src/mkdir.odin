@@ -3,7 +3,6 @@ package coreutils
 import "core:flags"
 import "core:fmt"
 import "core:os"
-import "core:strings"
 
 main :: proc() {
 	Options :: struct {
@@ -14,33 +13,18 @@ main :: proc() {
 	opts: Options
 	style: flags.Parsing_Style = .Odin
 	flags.parse_or_exit(&opts, os.args, style)
-	dirs := strings.split(strings.join(opts.overflow[:], " "), " ")
 
-	if len(dirs) < 1 {
+	if len(opts.overflow) < 1 {
 		fmt.println("Try 'mkdir -help' for more information.")
 		os.exit(0)
 	}
 
-	for dir in dirs {
-		allocator := context.temp_allocator
-		if strings.contains(dir, "/") {
-			if opts.parents {
-				os.make_directory_all(dir)
-			} else {
-				nested := strings.split(dir, "/", allocator)
-				for sub in nested {
-					if _, err := os.stat(sub, allocator); err != nil {
-						fmt.printf(
-							"mkdir: cannot create directory '%s': No such file or directory",
-							dir,
-						)
-						os.exit(1)
-					}
-				}
-				os.make_directory_all(dir)
-			}
-		} else {
-			os.make_directory(dir)
+	create := os.make_directory_all if opts.parents else os.make_directory
+	for dir in opts.overflow {
+		if dir == "" do continue
+		if err := create(dir); err != nil {
+			fmt.eprintfln("mkdir: cannot create directory '%s': %s", dir, os.error_string(err))
+			os.exit(1)
 		}
 	}
 }
