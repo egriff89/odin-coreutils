@@ -1,6 +1,5 @@
 package coreutils
 
-import "base:runtime"
 import "core:flags"
 import "core:fmt"
 import "core:os"
@@ -16,18 +15,17 @@ main :: proc() {
 	opts: Options
 	style: flags.Parsing_Style = .Odin
 	flags.parse_or_exit(&opts, os.args, style)
-	files := strings.split(strings.join(opts.overflow[:], " "), " ")
 
-	if len(files) == 0 {
+	if len(opts.overflow) == 0 {
 		fmt.println("rm: missing operand")
 		return
 	} else {
 		if opts.recursive {
-			for file in files {
+			for file in opts.overflow {
 				recursive_remove(file, opts.verbose)
 			}
 		} else {
-			for file in files {
+			for file in opts.overflow {
 				if opts.verbose {
 					fmt.printfln("removed: %s", file)
 				}
