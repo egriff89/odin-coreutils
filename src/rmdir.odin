@@ -1,32 +1,29 @@
 package coreutils
 
-import "core:strings"
 import "core:flags"
 import "core:fmt"
 import "core:os"
 
 main :: proc() {
-    Options :: struct {
-        overflow: [dynamic]string `usage:"files or directories to remove"`,
-        verbose: bool `args:"name=v" usage:"explain what is being done`,
-        verbose_long: bool `args:"name=verbose" usage:"explain what is being done`
-    }
+	Options :: struct {
+		overflow: [dynamic]string `usage:"files or directories to remove"`,
+		verbose:  bool `args:"name=v" usage:"explain what is being done`,
+	}
 
-    opts: Options
-    style: flags.Parsing_Style = .Odin
-    flags.parse_or_exit(&opts, os.args, style)
-    files := strings.split(strings.join(opts.overflow[:], " "), " ")
+	opts: Options
+	style: flags.Parsing_Style = .Odin
+	flags.parse_or_exit(&opts, os.args, style)
 
-    if len(files) > 0 {
-        for file in files {
-            if os.remove(file) == nil {
-                if opts.verbose || opts.verbose_long {
-                    fmt.printfln("rmdir: removing directory, '%s'", file)
-                }
-            } else {
-                fmt.printfln("rmdir: failed to remove '%s': Directory not empty", file)
-                return
-            }
-        }
-    }
+	if len(opts.overflow) > 0 {
+		for file in opts.overflow {
+			if err := os.remove(file); err == nil {
+				if opts.verbose {
+					fmt.printfln("rmdir: removing directory, '%s'", file)
+				}
+			} else {
+				fmt.printfln("rmdir: failed to remove '%s': %s", file, os.error_string(err))
+				os.exit(1)
+			}
+		}
+	}
 }
