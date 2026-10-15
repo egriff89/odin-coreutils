@@ -21,37 +21,19 @@ main :: proc() {
 		allocator := context.temp_allocator
 		temp_path, err := os.make_directory_temp(opts.template_dir, opts.template, allocator)
 		if err != nil {
-			if !opts.quiet {
-				fmt.printfln(
-					"mktemp: failed to create directory via template '%s/%s': %s",
-					opts.template_dir,
-					opts.template,
-					os.error_string(err),
-				)
-			}
+			if !opts.quiet do fmt.printfln("mktemp: failed to create directory via template '%s/%s': %s", opts.template_dir, opts.template, os.error_string(err))
 			os.exit(1)
 		} else {
-			if !opts.quiet {
-				fmt.printfln(temp_path)
-			}
+			if !opts.quiet do fmt.printfln(temp_path)
 		}
 	} else {
 		file, err := os.create_temp_file(opts.template_dir, opts.template)
 		if err != nil {
-			if !opts.quiet {
-				fmt.printfln(
-					"mktemp: failed to create file via template '%s/%s': %s",
-					opts.template_dir,
-					opts.template,
-					os.error_string(err),
-				)
-			}
+			if !opts.quiet do fmt.printfln("mktemp: failed to create file via template '%s/%s': %s", opts.template_dir, opts.template, os.error_string(err))
 			os.exit(1)
 		}
 		defer os.close(file)
 
-		if !opts.quiet {
-			fmt.println(os.name(file))
-		}
+		if !opts.quiet do fmt.println(os.name(file))
 	}
 }
