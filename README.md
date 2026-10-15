@@ -88,7 +88,7 @@ Attempting to rewrite the GNU coreutils in Odin as a way of learning the languag
 - [ ] [pinky](https://man7.org/linux/man-pages/man1/pinky.1.html)
 - [x] [printenv](https://man7.org/linux/man-pages/man1/printenv.1.html)
 - [ ] [printf](https://man7.org/linux/man-pages/man1/printf.1.html)
-- [ ] [pwd](https://man7.org/linux/man-pages/man1/pwd.1.html)
+- [x] [pwd](https://man7.org/linux/man-pages/man1/pwd.1.html)
 - [ ] [readlink](https://man7.org/linux/man-pages/man1/readlink.1.html)
 - [ ] [runcon](https://man7.org/linux/man-pages/man1/runcon.1.html)
 - [ ] [seq](https://man7.org/linux/man-pages/man1/seq.1.html)
